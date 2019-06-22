@@ -18,16 +18,13 @@
 #include "controller_parameter_server/parameter_server.hpp"
 #include "controller_parameter_server/yaml_parser.hpp"
 
-namespace controller_parameter_server
-{
+namespace controller_parameter_server {
 
 ParameterServer::ParameterServer()
-: rclcpp::Node("controller_parameter_server")
-{}
+    : rclcpp::Node("controller_parameter_server",
+                   rclcpp::NodeOptions().allow_undeclared_parameters(true)) {}
 
-void
-ParameterServer::load_parameters(const std::string & yaml_config_file)
-{
+void ParameterServer::load_parameters(const std::string& yaml_config_file) {
   if (yaml_config_file.empty()) {
     throw std::runtime_error("yaml config file path is empty");
   }
@@ -41,9 +38,8 @@ ParameterServer::load_parameters(const std::string & yaml_config_file)
   }
 }
 
-void
-ParameterServer::load_parameters(const std::string & key, const std::string & value)
-{
+void ParameterServer::load_parameters(const std::string& key,
+                                      const std::string& value) {
   this->set_parameters({rclcpp::Parameter(key, value)});
 }
 
