@@ -15,7 +15,6 @@ find_package(rclcpp REQUIRED)
 find_package(rcutils REQUIRED)
 find_package(yaml-cpp REQUIRED)
 
-message("yaml-cpp dir ${YAML_CPP_INCLUDE_DIR}")
 add_library(yaml_parser SHARED src/yaml_parser.cpp)
 target_include_directories(
   yaml_parser PUBLIC include
