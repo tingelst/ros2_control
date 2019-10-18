@@ -20,9 +20,9 @@
 
 namespace controller_parameter_server {
 
-ParameterServer::ParameterServer()
-    : rclcpp::Node("controller_parameter_server",
-                   rclcpp::NodeOptions().allow_undeclared_parameters(true)) {}
+ParameterServer::ParameterServer(const rclcpp::NodeOptions & options)
+: rclcpp::Node("controller_parameter_server", options)
+{}
 
 void ParameterServer::load_parameters(const std::string& yaml_config_file) {
   if (yaml_config_file.empty()) {
